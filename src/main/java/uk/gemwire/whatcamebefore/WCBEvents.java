@@ -23,6 +23,7 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid="whatcamebefore", bus= Mod.EventBusSubscriber.Bus.FORGE)
 public class WCBEvents {
 
+    @SubscribeEvent
     public static void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof PlayerEntity) {
             ProgressProvider provider = new ProgressProvider();
