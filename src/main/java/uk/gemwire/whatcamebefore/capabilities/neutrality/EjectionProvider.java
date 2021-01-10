@@ -21,7 +21,10 @@ public class EjectionProvider implements ICapabilitySerializable<CompoundNBT> {
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        return ejectionOptional.cast();
+        if(cap == CapabilityEjection.PLAYER_EJECTION_TIMER)
+            return ejectionOptional.cast();
+        else
+            return LazyOptional.empty();
     }
 
     @Override

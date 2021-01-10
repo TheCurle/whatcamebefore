@@ -21,7 +21,10 @@ public class ProgressProvider implements ICapabilitySerializable<CompoundNBT> {
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        return progressOptional.cast();
+        if(cap == CapabilityProgress.PLAYER_MOD_PROGRESS)
+            return progressOptional.cast();
+        else
+            return LazyOptional.empty();
     }
 
     @Override

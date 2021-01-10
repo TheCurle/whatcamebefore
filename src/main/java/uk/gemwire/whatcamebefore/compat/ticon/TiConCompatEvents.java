@@ -24,13 +24,13 @@ public class TiConCompatEvents {
 
     public static void playerTick(TickEvent.PlayerTickEvent e) {
         // Only do this serverside!
-        if(e.player.world.isRemote) {
+        if(!e.player.world.isRemote) {
             // Is the player inside the Neutrality?
-            WhatCameBefore.LOGGER.info("Player is in biome " + e.player.world.getBiome(e.player.getPosition()).getRegistryName() + " vs " + TiConCompatRegistry.NEUTRAL.get().getRegistryName());
             if (e.player.world.getBiome(e.player.getPosition()).getRegistryName().equals(TiConCompatRegistry.NEUTRAL.get().getRegistryName())) {
-                WhatCameBefore.LOGGER.info("Tick inside the Neutrality!");
+
                 // Is it their first time here?
                 e.player.getCapability(CapabilityEjection.PLAYER_EJECTION_TIMER).ifPresent((cap) -> {
+                    WhatCameBefore.LOGGER.info("Neutrality and cap present");
                     boolean firstTime = true;
                     int timer = cap.getTimer();
 
@@ -52,6 +52,7 @@ public class TiConCompatEvents {
                         BlockPos playerPos = e.player.getPosition();
                         BlockPos ejectionPoint = world.getChunkProvider().getChunkGenerator().getBiomeProvider().findBiomePosition(playerPos.getX(), playerPos.getY(), playerPos.getZ(), 6400, 8, (potentialBiome) ->
                             potentialBiome.getRegistryName().getNamespace() == "minecraft", e.player.world.rand, true);
+
 
                         Vector3d ejectionVelocity = new Vector3d(playerPos.getX() - ejectionPoint.getX(), playerPos.getY() + 20, playerPos.getZ() - ejectionPoint.getZ());
                         WhatCameBefore.LOGGER.warn("Bye! Have a nice life! " + ejectionVelocity.toString());
