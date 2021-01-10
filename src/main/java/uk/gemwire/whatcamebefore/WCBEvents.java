@@ -2,22 +2,17 @@ package uk.gemwire.whatcamebefore;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import uk.gemwire.whatcamebefore.capabilities.CapabilityProgress;
-import uk.gemwire.whatcamebefore.capabilities.ProgressDefaultProvider;
-import uk.gemwire.whatcamebefore.capabilities.ProgressProvider;
-
-import java.util.UUID;
+import uk.gemwire.whatcamebefore.capabilities.neutrality.EjectionProvider;
+import uk.gemwire.whatcamebefore.capabilities.progress.CapabilityProgress;
+import uk.gemwire.whatcamebefore.capabilities.progress.ProgressProvider;
 
 
 @Mod.EventBusSubscriber(modid="whatcamebefore", bus= Mod.EventBusSubscriber.Bus.FORGE)
@@ -26,9 +21,13 @@ public class WCBEvents {
     @SubscribeEvent
     public static void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof PlayerEntity) {
-            ProgressProvider provider = new ProgressProvider();
-            event.addCapability(new ResourceLocation("whatcamebefore", "progress"), provider);
-            event.addListener(provider::invalidate);
+            ProgressProvider progress = new ProgressProvider();
+            event.addCapability(new ResourceLocation("whatcamebefore", "progress"), progress);
+            event.addListener(progress::invalidate);
+
+            EjectionProvider ejection = new EjectionProvider();
+            event.addCapability(new ResourceLocation("whatcamebefore", "ejectiontimer"), ejection);
+            event.addListener(ejection::invalidate);
         }
     }
 

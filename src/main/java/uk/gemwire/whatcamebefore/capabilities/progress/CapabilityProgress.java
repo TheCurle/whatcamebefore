@@ -1,4 +1,4 @@
-package uk.gemwire.whatcamebefore.capabilities;
+package uk.gemwire.whatcamebefore.capabilities.progress;
 
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.INBT;

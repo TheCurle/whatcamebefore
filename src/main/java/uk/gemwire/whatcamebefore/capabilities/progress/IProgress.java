@@ -1,4 +1,4 @@
-package uk.gemwire.whatcamebefore.capabilities;
+package uk.gemwire.whatcamebefore.capabilities.progress;
 
 public interface IProgress {
 
