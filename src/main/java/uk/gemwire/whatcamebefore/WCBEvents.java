@@ -1,18 +1,26 @@
 package uk.gemwire.whatcamebefore;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.ai.attributes.AttributeModifierMap;
+import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Items;
 import net.minecraft.particles.ParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import uk.gemwire.whatcamebefore.capabilities.neutrality.EjectionProvider;
 import uk.gemwire.whatcamebefore.capabilities.progress.CapabilityProgress;
 import uk.gemwire.whatcamebefore.capabilities.progress.ProgressProvider;
+import uk.gemwire.whatcamebefore.compat.ticon.TiConCompatRegistry;
+import uk.gemwire.whatcamebefore.compat.ticon.entities.NeutralSlime;
+
+import java.util.HashMap;
 
 
 @Mod.EventBusSubscriber(modid="whatcamebefore", bus= Mod.EventBusSubscriber.Bus.FORGE)
@@ -59,6 +67,14 @@ public class WCBEvents {
                     entity.getEntityWorld().addParticle(ParticleTypes.BARRIER, entity.getPosX(), entity.getPosY() + 2, entity.getPosZ(), 0.0, 0.0, 0.0);
                 });
             }
+        }
+    }
+
+    @Mod.EventBusSubscriber(modid = "whatcamebefore", bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class WCBModEvents {
+        @SubscribeEvent
+        public static void entityAttributes(EntityAttributeCreationEvent e) {
+            e.put(TiConCompatRegistry.NEUTRAL_SLIME.get(), NeutralSlime.setupAttributes());
         }
     }
 

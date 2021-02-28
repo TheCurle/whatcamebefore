@@ -6,13 +6,13 @@ public class EjectionDefaultProvider implements IEjection {
 
     @Override
     public void setTimer(int newTime) {
-        System.out.println("Parsing capability for ejection - current timer = " + newTime);
+        //System.out.println("Parsing capability for ejection - current timer = " + newTime);
         this.timer = newTime;
     }
 
     @Override
     public int getTimer() {
-        System.out.println("Parsing capability for ejection - current timer = " + timer);
+        //if(timer != 0) System.out.println("Parsing capability for ejection - current timer = " + timer);
         return timer;
     }
 }

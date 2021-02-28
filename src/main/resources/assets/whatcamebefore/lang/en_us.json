@@ -1,3 +1,5 @@
 {
-  "item.whatcamebefore.journal": "The Journal"
+  "item.whatcamebefore.journal": "The Journal",
+  "entity.whatcamebefore.neutral_slime": "Neutral Slime",
+  "item.whatcamebefore.neutral_slime_ball": "Neutral Slimeball"
 }
