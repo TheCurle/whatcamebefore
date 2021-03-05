@@ -96,6 +96,8 @@ public class TiConCompatEvents {
                         Vector3d ejectionVelocity = new Vector3d(playerPos.getX() - ejectionPoint.getX(), playerPos.getY() + 30, playerPos.getZ() - ejectionPoint.getZ());
                         WhatCameBefore.LOGGER.warn("Bye! Have a nice life! " + ejectionVelocity.toString());
                         e.player.setMotion(ejectionVelocity.x, ejectionVelocity.y, ejectionVelocity.z);
+                        e.player.velocityChanged = true;
+                        e.player.isAirBorne = true;
 
                         cap.setTimer(0);
                     }

@@ -23,18 +23,18 @@ import uk.gemwire.whatcamebefore.compat.ticon.entities.NeutralSlime;
 import java.util.HashMap;
 
 
-@Mod.EventBusSubscriber(modid="whatcamebefore", bus= Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid=WhatCameBefore.ID, bus= Mod.EventBusSubscriber.Bus.FORGE)
 public class WCBEvents {
 
     @SubscribeEvent
     public static void attachCapabilities(AttachCapabilitiesEvent<Entity> event) {
         if(event.getObject() instanceof PlayerEntity) {
             ProgressProvider progress = new ProgressProvider();
-            event.addCapability(new ResourceLocation("whatcamebefore", "progress"), progress);
+            event.addCapability(new ResourceLocation(WhatCameBefore.ID, "progress"), progress);
             event.addListener(progress::invalidate);
 
             EjectionProvider ejection = new EjectionProvider();
-            event.addCapability(new ResourceLocation("whatcamebefore", "ejectiontimer"), ejection);
+            event.addCapability(new ResourceLocation(WhatCameBefore.ID, "ejectiontimer"), ejection);
             event.addListener(ejection::invalidate);
         }
     }
@@ -70,7 +70,7 @@ public class WCBEvents {
         }
     }
 
-    @Mod.EventBusSubscriber(modid = "whatcamebefore", bus = Mod.EventBusSubscriber.Bus.MOD)
+    @Mod.EventBusSubscriber(modid = WhatCameBefore.ID, bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class WCBModEvents {
         @SubscribeEvent
         public static void entityAttributes(EntityAttributeCreationEvent e) {

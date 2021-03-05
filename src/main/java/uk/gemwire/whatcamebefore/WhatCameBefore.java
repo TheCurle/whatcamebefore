@@ -11,9 +11,10 @@ import uk.gemwire.whatcamebefore.init.ClientSetup;
 import uk.gemwire.whatcamebefore.init.registry.WCBRegistry;
 import uk.gemwire.whatcamebefore.init.Setup;
 
-@Mod("whatcamebefore")
+@Mod(WhatCameBefore.ID)
 public class WhatCameBefore {
     public static final Logger LOGGER = LogManager.getLogger();
+    public static final String ID = "whatcamebefore";
 
     public WhatCameBefore() {
         MinecraftForge.EVENT_BUS.register(this);

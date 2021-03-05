@@ -1,5 +1,9 @@
 {
   "item.whatcamebefore.journal": "The Journal",
-  "entity.whatcamebefore.neutral_slime": "Neutral Slime",
-  "item.whatcamebefore.neutral_slime_ball": "Neutral Slimeball"
+  "item.whatcamebefore.neutral_slime_ball": "Neutral Slimeball",
+  "item.whatcamebefore.ender_gel": "Ender Gel",
+  "item.whatcamebefore.cauldron": "Cauldron",
+
+  "entity.whatcamebefore.neutral_slime": "Neutral Slime"
+
 }
